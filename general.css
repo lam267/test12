@@ -50880,17 +50880,17 @@ position:relative
 .faq__content::after {
     content: "";
     position: absolute;
-    right: -8px;
-    top: 33%;
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"><path d="M12 14.667L16 10.0003H8L12 14.667Z" fill="%23666"/></svg>') no-repeat center;
+    right: 4px;
+    top: 50%;
+    background: url('https://storage.perfectcdn.com/0a268b/5znolnb1yb92rqs4.svg') no-repeat center;
     background-size: contain;
     transform: translateY(-50%);
-    height: 45px;
-    width: 45px;
+    height: 10px;
+    width: 14px;
 }
 details[open].faq__item .faq__content::after {
-    transform: translateY(-50%) rotate(180deg);
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"><path d="M12 14.667L16 10.0003H8L12 14.667Z" fill="white"/></svg>') no-repeat center;
+    transform: translateY(-50%);
+    background: url('https://storage.perfectcdn.com/0a268b/bx681gx0q8dnchn9.svg') no-repeat center;
 }
 details[open].faq__item { 
     gap: 16px;
@@ -55075,8 +55075,8 @@ ul.select2-results__options>li .select2-selection__text span:last-child:hover {
 .update13_2 .select2-container.select2-container--default.select2-container--open .select2-dropdown {
     top: 11px;
     gap: 6px;
-    padding-top: 12px;
-    padding-bottom: 12px;
+    padding-top: 0px;
+    padding-bottom: 0px;
     backdrop-filter: blur(20px);
     border: 1px solid #202026;
     border-radius: 20px;
