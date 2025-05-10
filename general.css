@@ -46747,7 +46747,7 @@ main p {
 @media (max-width: 767px) {
 
     .page-content-wpr {
-        padding-bottom: 110px;
+        padding-bottom: 20px;
     }
 
     footer.footer {
@@ -65676,7 +65676,8 @@ color: #666
     .box-bonus-sph > div{
         padding: 18px 20px;
         padding-bottom: 8px;
-        margin-bottom: 24px;
+        margin-bottom: 10px;
+        background: none;
     }
 
     .sph-page-addfunds .fund-list{
