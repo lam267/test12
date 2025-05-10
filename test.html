@@ -1,0 +1,491 @@
+<style>
+
+    .changemail-content {
+      position: relative;
+      background-color: #282E32;
+      border: 1px solid #07090A;
+      border-radius: 10px;
+      box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+      -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+      background-clip: padding-box;
+      -webkit-background-clip: padding-box;
+      outline: 0;
+    }
+    
+    .changemail-content input[type="email"] {
+      height: 50px;
+      color: #fff;
+      padding: 0 20px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      width: 100%;
+    }
+    
+    .changemail-content input[type="text"] {
+      height: 50px;
+      color: #fff;
+      padding: 0 20px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      width: 100%;
+    }
+    
+    .changemail-content input[type="password"] {
+      height: 50px;
+      color: #fff;
+      padding: 0 20px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      width: 100%;
+    }
+    
+    .changemail-dialog {
+        -webkit-transform: translate(0, 0);
+        -ms-transform: translate(0, 0);
+        -o-transform: translate(0, 0);
+        transform: translate(0, 50%) !important
+    }
+    .modal-open .modal.account-modal .modal-close {
+        z-index: 1;
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        border: none;
+        background-color: transparent;
+        padding: 0px;
+    }
+</style>
+<div class="body-content-wpr account-page account-update21_2">
+<div class="page-content-overlay"></div>
+<h1 class="page-hdng page-account__title">Account</h1>
+<div class="account-cntnt-wpr">
+    <div class="notification-wrap">
+        {% if error %}
+        <div class="wtch-vdo-wpr {% if site['rtl'] %} rtl-alert {% endif %}">
+            <p>
+                {{ errorText }}
+            </p>
+            <button type="button" class="vdo-wpr-cls-btn">
+                <img src="https://storage.perfectcdn.com/idhwx8/l44m2d1t94p327qr.png" alt="">
+            </button>
+        </div>
+        {% endif %}
+        {% if success %}
+        <div class="wtch-vdo-wpr {% if site['rtl'] %} rtl-alert {% endif %}">
+            <p>
+                {{ successText }}
+            </p>
+            <button type="button" class="vdo-wpr-cls-btn">
+                <img src="https://storage.perfectcdn.com/idhwx8/l44m2d1t94p327qr.png" alt="">
+            </button>
+        </div>
+        {% endif %}
+    </div>
+    <div class="page-account">
+        <div class="account-box">
+            <div class="account__sidebar">
+                <span class="account__tab account__tab--active" data-tab="main-info">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                        <g clip-path="url(#clip0_8886_64508)">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M14 7C14 10.866 10.866 14 7 14C3.134 14 0 10.866 0 7C0 3.134 3.134 0 7 0C10.866 0 14 3.134 14 7ZM9.82121 4.87877C10.0262 5.08379 10.0262 5.41621 9.82121 5.62121L6.32121 9.12121C6.11618 9.32624 5.78382 9.32624 5.57877 9.12121L4.17877 7.72121C3.97375 7.51618 3.97375 7.18382 4.17877 6.97879C4.38379 6.77376 4.71621 6.77376 4.92123 6.97879L5.95 8.00751L7.51436 6.44315L9.07879 4.87877C9.28382 4.67375 9.61618 4.67375 9.82121 4.87877Z"
+                            fill="white" />
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_8886_64508">
+                            <rect width="14" height="14" fill="white" />
+                            </clipPath>
+                        </defs>
+                    </svg>
+                    Main info
+                </span>
+                <span class="account__tab" data-tab="security">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                        <g clip-path="url(#clip0_8886_64508)">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M14 7C14 10.866 10.866 14 7 14C3.134 14 0 10.866 0 7C0 3.134 3.134 0 7 0C10.866 0 14 3.134 14 7ZM9.82121 4.87877C10.0262 5.08379 10.0262 5.41621 9.82121 5.62121L6.32121 9.12121C6.11618 9.32624 5.78382 9.32624 5.57877 9.12121L4.17877 7.72121C3.97375 7.51618 3.97375 7.18382 4.17877 6.97879C4.38379 6.77376 4.71621 6.77376 4.92123 6.97879L5.95 8.00751L7.51436 6.44315L9.07879 4.87877C9.28382 4.67375 9.61618 4.67375 9.82121 4.87877Z"
+                            fill="white" />
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_8886_64508">
+                            <rect width="14" height="14" fill="white" />
+                            </clipPath>
+                        </defs>
+                    </svg>
+                    Security
+                </span>
+            </div>
+            <div class="account__content">
+                <div class="account__panel account__panel--main-info">
+                    <div class="account__profile">
+                        <div class="account__avatar-wrapper">
+                            <img id="profile_img" alt="Profile image" src="https://storage.perfectcdn.com/0a268b/f9efgn2z7otlw7xr.png" class="account__avatar">
+                            <div class="account__change-avatar">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M13.5501 20.1599C13.2901 20.2699 13.0101 20.3699 12.7101 20.4699L11.1301 20.9899C7.1601 22.2699 5.0701 21.1999 3.7801 17.2299L2.5001 13.2799C1.2201 9.30992 2.2801 7.20992 6.2501 5.92992L7.7901 5.41992C7.6001 5.89992 7.4401 6.44992 7.2901 7.06992L6.3101 11.2599C5.2101 15.9699 6.8201 18.5699 11.5301 19.6899L13.2101 20.0899C13.3201 20.1199 13.4401 20.1399 13.5501 20.1599Z" fill="white" fill-opacity="0.6"/>
+                                    <path d="M17.1699 3.21001L15.4999 2.82001C12.1599 2.03001 10.1699 2.68001 8.99994 5.10001C8.69994 5.71001 8.45994 6.45001 8.25994 7.30001L7.27994 11.49C6.29994 15.67 7.58994 17.73 11.7599 18.72L13.4399 19.12C14.0199 19.26 14.5599 19.35 15.0599 19.39C18.1799 19.69 19.8399 18.23 20.6799 14.62L21.6599 10.44C22.6399 6.26001 21.3599 4.19001 17.1699 3.21001Z" fill="white" fill-opacity="0.6"/>
+                                    </svg>
+                                CHANGE <br> AVATAR
+                                <input type="file" id="user_img_file" class="account__input-file" accept="image/png, image/jpeg, image/jpg, image/gif">
+                            </div>
+                        </div>
+                        <div class="account__details">
+                            <div class="account__field">
+                                <label class="account__label">Profile Name</label>
+                                <input type="text" class="account__input" value="{{ user['username'] }}" readonly>
+                            </div>
+                            <div class="account__field">
+                                <label class="account__label">Current Email</label>
+                                <input type="text" class="account__input" value="{{ user['email'] }}" readonly>
+                            </div>
+                            <!-- <div class="account__field">
+                                <label class="account__label">Main currency</label>
+                                <div class="account__currency">
+                                    <button class="account__currency-btn account__currency-btn--active">
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <rect x="0.5" y="0.5" width="15" height="15" rx="7.5" fill="#666666"/>
+                                            <path d="M10.47 9.7C10.47 10.2267 10.3033 10.6667 9.97 11.02C9.64333 11.3667 9.2 11.5767 8.64 11.65V12.5H7.82V11.65C7.17333 11.57 6.67333 11.32 6.32 10.9C5.97333 10.48 5.8 9.91667 5.8 9.21H6.95C6.95 9.66333 7.06333 10.02 7.29 10.28C7.51667 10.54 7.83333 10.67 8.24 10.67C8.58667 10.67 8.85333 10.59 9.04 10.43C9.22667 10.2633 9.32 10.03 9.32 9.73C9.32 9.50333 9.25333 9.31333 9.12 9.16C8.98667 9.00667 8.75333 8.87 8.42 8.75L7.34 8.4C6.9 8.24667 6.56667 8.00333 6.34 7.67C6.11333 7.33 6 6.93 6 6.47C6 5.99667 6.16667 5.58333 6.5 5.23C6.84 4.87667 7.28 4.66667 7.82 4.6V3.7H8.64V4.63C9.15333 4.72333 9.56 4.96 9.86 5.34C10.16 5.71333 10.31 6.18 10.31 6.74H9.16C9.16 6.36 9.06667 6.07 8.88 5.87C8.7 5.66333 8.44 5.56 8.1 5.56C7.80667 5.56 7.57667 5.63667 7.41 5.79C7.24333 5.93667 7.16 6.14 7.16 6.4C7.16 6.66 7.23 6.88 7.37 7.06C7.51667 7.23333 7.77333 7.38333 8.14 7.51L9.27 7.91C10.07 8.19 10.47 8.78667 10.47 9.7Z" fill="white"/>
+                                        </svg>
+                                        USD
+                                    </button>
+                                    <button class="account__currency-btn">
+                                        <svg width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <rect y="0.5" width="15" height="15" rx="7.5" fill="#666666"/>
+                                            <path d="M7.8 10.62C8.12 10.62 8.38 10.5233 8.58 10.33C8.78 10.13 8.9 9.86333 8.94 9.53H10.06C9.98667 10.1367 9.75 10.6367 9.35 11.03C8.95 11.4233 8.43333 11.62 7.8 11.62C6.38667 11.62 5.57 10.7833 5.35 9.11H4.7L4.9 8.36H5.29V8.1V7.84H4.7L4.9 7.09H5.35C5.57 5.41667 6.38667 4.58 7.8 4.58C8.43333 4.58 8.95 4.77667 9.35 5.17C9.75 5.56333 9.98667 6.06333 10.06 6.67H8.94C8.89333 6.33667 8.77 6.07333 8.57 5.88C8.37667 5.68 8.12 5.58 7.8 5.58C7.38667 5.58 7.07333 5.71 6.86 5.97C6.65333 6.22333 6.52 6.59667 6.46 7.09H8.35L8.15 7.84H6.4V8.1V8.36H8.35L8.15 9.11H6.46C6.52 9.60333 6.65333 9.98 6.86 10.24C7.07333 10.4933 7.38667 10.62 7.8 10.62Z" fill="white"/>
+                                        </svg>
+                                        EUR
+                                    </button>
+                                    <button class="account__currency-btn">
+                                        <svg width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <rect y="0.5" width="15" height="15" rx="7.5" fill="#666666"/>
+                                            <path d="M7.8 10.62C8.12 10.62 8.38 10.5233 8.58 10.33C8.78 10.13 8.9 9.86333 8.94 9.53H10.06C9.98667 10.1367 9.75 10.6367 9.35 11.03C8.95 11.4233 8.43333 11.62 7.8 11.62C6.38667 11.62 5.57 10.7833 5.35 9.11H4.7L4.9 8.36H5.29V8.1V7.84H4.7L4.9 7.09H5.35C5.57 5.41667 6.38667 4.58 7.8 4.58C8.43333 4.58 8.95 4.77667 9.35 5.17C9.75 5.56333 9.98667 6.06333 10.06 6.67H8.94C8.89333 6.33667 8.77 6.07333 8.57 5.88C8.37667 5.68 8.12 5.58 7.8 5.58C7.38667 5.58 7.07333 5.71 6.86 5.97C6.65333 6.22333 6.52 6.59667 6.46 7.09H8.35L8.15 7.84H6.4V8.1V8.36H8.35L8.15 9.11H6.46C6.52 9.60333 6.65333 9.98 6.86 10.24C7.07333 10.4933 7.38667 10.62 7.8 10.62Z" fill="white"/>
+                                        </svg>
+                                        GBP
+                                    </button>
+                                    <button class="account__currency-btn">
+                                        <svg width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <rect y="0.5" width="15" height="15" rx="7.5" fill="#666666"/>
+                                            <path d="M8.58 9.6H7.15V10.08H8.78V10.8H7.15V11.5H6V10.8H5V10.08H6V9.6H5V8.57H6V4.7H8.58C9.28 4.7 9.85333 4.93 10.3 5.39C10.7533 5.85 10.98 6.43667 10.98 7.15C10.98 7.86333 10.7533 8.45 10.3 8.91C9.85333 9.37 9.28 9.6 8.58 9.6ZM7.15 5.73V8.57H8.51C8.89 8.57 9.20333 8.43667 9.45 8.17C9.70333 7.89667 9.83 7.55667 9.83 7.15C9.83 6.74333 9.70333 6.40667 9.45 6.14C9.20333 5.86667 8.89 5.73 8.51 5.73H7.15Z" fill="white"/>
+                                        </svg>
+                                        RUB
+                                    </button>
+                                    <button class="account__currency-btn">
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <rect x="0.5" y="0.5" width="15" height="15" rx="7.5" fill="#666666"/>
+                                            <path d="M9.29 8.85H10.41C10.41 9.31667 10.33 9.72667 10.17 10.08C10.0167 10.4267 9.8 10.7033 9.52 10.91C9.24 11.11 8.92667 11.26 8.58 11.36C8.23333 11.4533 7.85 11.5 7.43 11.5H6.31V9.36L5.8 9.61V8.76L6.31 8.51V7.99L5.8 8.24V7.39L6.31 7.14V4.7H7.46V6.58L8.85 5.91V6.76L7.46 7.43V7.95L8.85 7.28V8.13L7.46 8.8V10.47C8.68 10.47 9.29 9.93 9.29 8.85Z" fill="white"/>
+                                        </svg>
+                                        TRY
+                                    </button>
+                                    <button class="account__currency-btn">
+                                        <svg width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <rect y="0.5" width="15" height="15" rx="7.5" fill="#666666"/>
+                                            <path d="M10.55 4.7L8.41 8.71H9.72V9.46H8.38V9.96H9.72V10.71H8.38V11.5H7.22V10.71H5.88V9.96H7.22V9.46H5.88V8.71H7.19L5.05 4.7H6.33L7.8 7.78L9.27 4.7H10.55Z" fill="white"/>
+                                        </svg>
+                                        JPY
+                                    </button>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="account__panel account__panel--security">
+                    <h2 class="account__section-title">Password</h2>
+                    <form class="pass-reset-form" method="post" action="">
+                        <div class="account__field">
+                            <label class="account__label">{{ lang('account.password.current') }}</label>
+                            <input type="password" class="account__input"  placeholder="Enter current password" id="current"
+                            name="SettingsFrom[current_password]">
+                        </div>
+                        <div class="account__field">
+                            <label class="account__label">{{ lang('account.password.new') }}</label>
+                            <input type="password"  class="account__input" placeholder="Enter new password" id="new"
+                            name="SettingsFrom[password]">
+                        </div>
+                        <div class="account__field">
+                            <label class="account__label">{{ lang('account.password.confirm') }}</label>
+                            <input type="password" class="account__input" placeholder="Enter confirm new password"
+                            id="confirm" name="SettingsFrom[confirm_password]">
+                        </div>
+                        <div class="account-form-sbmt-btn-wpr">
+                            <input type="hidden" name="_csrf" value="{{csrftoken}}">
+                            <button class="account__btn account__btn--primary" type="submit">{{ lang('account.password.button') }}</button>
+                        </div>
+                    </form>
+                    <div id="2fa-approve-error-block"
+                            style="{% if twofactorauth.error %} display: block; {% else %} display: none; {% endif %}"
+                            class="alert alert-dismissible alert-danger {% if site['rtl'] %} rtl-alert {% endif %}">
+                        <button type="button" class="close">&times;</button>
+                        <span id="2fa-error-text">{{ twofactorauth.error }}</span>
+                    </div>
+                    <h3 class="account__section-title">{{ lang('2fa.title') }}
+                        {% if not twofactorauth.activated %}
+                        {{ lang('account.2fa.enabled') }}
+                        {% endif %}
+                    </h3>
+    
+                    <!-- 2FA Form generate code -->
+                    <form id="2fa-generate-form" class="account__field" method="post" {% if site['rtl'] %} class="rtl-form" {% endif %} action="{{ twofactorauth.url.generate }}" style="{% if twofactorauth.active_code %} display: none; {% else %} display: block; {% endif %}">
+                        <label class="account__label">Code</label>
+                        <p class="account__description">{{ lang('account.2fa.description') }}</p>
+                        <input type="hidden" name="enabled" value="{{ twofactorauth.activated }}">
+                        <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+                        <button id="2fa-generate" type="submit" class="account__btn account__btn--primary">
+                            {% if twofactorauth.activated %}
+                            {{ lang('account.2fa.enable') }}
+                            {% else %}
+                            {{ lang('account.2fa.disable') }}
+                            {% endif %}
+                        </button>
+                    </form>
+        
+                    <!-- 2FA Form approve code -->
+                    <form id="2fa-approve-form" method="post" {% if site['rtl'] %} class="rtl-form"{% endif %} action="{{ twofactorauth.url.approve }}" style="{% if twofactorauth.active_code %} display: block; {% else %} display: none; {% endif %}">
+                        <p>{{ lang('2fa.sent') }}</p>
+                        <div class="account__field">
+                            <label for="code" class="account__label">{{ lang('2fa.code') }}</label>
+                            <input type="text" id="code" name="code" class="form-control account__input">
+                        </div>
+                        <input type="hidden" name="enabled" value="{{ twofactorauth.activated }}">
+                        <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+                        <button id="2fa-approve" type="submit" class="account__btn account__btn--primary">
+                            {% if twofactorauth.activated %}
+                                {{ lang('account.2fa.enable') }}
+                            {% else %}
+                                {{ lang('account.2fa.disable') }}
+                            {% endif %}
+                        </button>
+                    </form>
+                        <h3 class="account__section-title">Time zone & API Key</h3>
+                    <form class="time-zone-form" {% if site['rtl'] %}class="rtl-form" {% endif %}
+                        action="" method="post">
+                        <div class="account__field">
+                            <label  class="account__label">{{ lang('account.timezone') }}</label>
+                            <div class="custom-select2 support-select " style="width: 100%;">
+                                <select class="form-control" id="id_select4_example"
+                                    name="SettingsFrom[timezone]">
+                                    {% for timezone,label in timezones %}
+                                    <option value="{{ timezone }}" {% if timezone==user['timezone']
+                                        %}selected{% endif %}>{{ label }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+                            <div class="account-form-sbmt-btn-wpr">
+                                <button class="account__btn account__btn--primary" type="submit">{{ lang('account.save') }}</button>
+                            </div>
+                        </div>
+                    </form>
+                    <form class="pass-reset-form" {% if site['rtl'] %}class="rtl-form" {% endif %}
+                        action="{{ page['url'] }}/newkey" method="post">
+                        <div class="account__field">
+                            <label class="account__section-title">{{ lang('account.api_key') }}</label>
+                            {% if user['is_generated_apikey'] %}
+                            <div class="api-input-wpr">
+                                <input type="text" id="api_keyd" class="account__input" value="{{ user['apikey'] }}" readonly>
+                                <!-- https://storage.perfectcdn.com/idhwx8/1i70353c37wzy38x.png -->
+                                <div class="custom-tooltip-wpr left">
+                                    <a href="javascript:void(0)" class="query_icon custom-tooltip-btn"
+                                        data-toggle="popover" data-trigger="hover" data-container="body"
+                                        data-placement="auto left" type="button" data-html="true"
+                                        id="logout">
+                                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M9 16.5V16.5C4.8575 16.5 1.5 13.1425 1.5 9V9C1.5 4.8575 4.8575 1.5 9 1.5V1.5C13.1425 1.5 16.5 4.8575 16.5 9V9C16.5 13.1425 13.1425 16.5 9 16.5Z"
+                                                stroke="white" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round"></path>
+                                            <path
+                                                d="M8.99998 10.0415V9.83318C8.99998 9.15234 9.42081 8.78318 9.84248 8.49984C10.2541 8.22234 10.6666 7.86068 10.6666 7.19401C10.6666 6.27318 9.92081 5.52734 8.99998 5.52734C8.07915 5.52734 7.33331 6.27318 7.33331 7.19401"
+                                                stroke="white" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round"></path>
+                                            <path
+                                                d="M8.99915 12.3333C8.88415 12.3333 8.79082 12.4267 8.79165 12.5417C8.79165 12.6567 8.88498 12.75 8.99998 12.75C9.11498 12.75 9.20832 12.6567 9.20832 12.5417C9.20832 12.4267 9.11498 12.3333 8.99915 12.3333"
+                                                stroke="white" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round"></path>
+                                        </svg>
+                                    </a>
+                                    <div class="custom-tooltip-cntnt-wpr">
+                                        <div class="custom-tooltip-cntnt">
+                                            <p>The key is hidden for security reasons</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <small class="help-block">{{ lang('account.api_key.date') }} {{
+                                user['apikey_created'] }}</small>
+                            {% endif %}
+                            <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+                            <div class="account-form-sbmt-btn-wpr">
+                                <button type="submit" class="account__btn account__btn--primary">{{ lang('account.generate_key') }}</button>
+                            </div>
+                        </div>
+                    </form>
+                    <h3 class="account__section-title">Email</h3>
+                    <div class="account__field">
+                        <form><label for="email" class="account__label">Current Email</label>
+                        <input type="text" class="account__input" id="email" value="{{ user['email'] }}" readonly></form>
+                    </div>
+                    <div class="account-form-sbmt-btn-wpr text-center">
+                        <button class="change-email-btn cmn_blue_btn account__btn account__btn--primary" data-toggle="modal" data-target="#exampleModalCenter">
+                            {{ lang('confirmemail.button.change') }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+  
+<!-- Reset Password Modal start -->
+<div class="custom-modal-outer change-photo-popup" style="display: none">
+    <div class="custom-modal-overlay"></div>
+    <div class="custom-modal-in change-img-modal-in">
+        <div class="modal-cntnt-wpr">
+            <div class="change-img-cntnt">
+                <button type="button" class="loginClose_btn modal-close-btn">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1.33252 1.33261L14.6659 14.6659" stroke="white" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round"></path>
+                        <path d="M14.6659 1.33261L1.33252 14.6659" stroke="white" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                </button>
+                <h3>Change you photo</h3>
+                <div class="change-img-wpr">
+                    <span>
+                        <img id="preview_img" src="https://storage.perfectcdn.com/idhwx8/dxz7db1hfu9iwzxb.png" alt="">
+                    </span>
+                </div>
+                <button type="button" class="cmn_blue_btn img-save-btn">Save</button>
+                <label class="file-upload-btn" for="img-upload-input">
+
+                    <span id="img-upload-input" class="cmn_blue_btn img-up-btn">Upload another photo</span>
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+  
+  <!-- Modal -->
+<div class="modal fade account-modal" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog changemail-dialog" role="document">
+        <div class="changemail-content">
+            <div style="cursor: pointer;" class="modal-close" data-dismiss="modal">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M18 6L6 18M18 18L6 6.00001" stroke="#666666" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <div class="modal-body">
+            <h3>{{ lang('confirmemail.change_email.title') }}</h3>
+            <form id="changeEmailForm" class="modal-cntnt-wpr{% if site['rtl'] %} rtl-form{% endif %}" method="post" action="">
+                <div id="changeEmailError" class="error-summary alert alert-dismissible alert-danger hidden{% if site['rtl'] %} rtl-alert {% endif %}"></div>
+                <div class="form-group">
+                    <label for="current-email">{{ lang('confirmemail.change_email.current_email') }}</label>
+                    <input type="text" class="form-control account__input" id="current-email" value="{{ user['email'] }}" readonly="">
+                </div>
+                <div class="form-group">
+                    <label for="new-email">{{ lang('confirmemail.change_email.new_email') }}</label>
+                    <input type="email"  placeholder="Enter new email" class="form-control" id="new-email" name="ChangeEmailForm[email]">
+                </div>
+                <div class="form-group">
+                    <label for="current-password">{{ lang('confirmemail.change_email.current_password') }}</label>
+                    <input type="password"  placeholder="Enter current password" class="form-control" id="current-password" name="ChangeEmailForm[password]">
+                </div>
+                <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+                <button type="submit" class="cmn_blue_btn account__btn account__btn--primary" id="changeEmailSubmitBtn">{{ lang('confirmemail.change_email.submit') }}</button>
+            </form>
+        </div>
+    </div>
+</div>
+  
+<!-- Reset Password Modal end -->
+  
+<script type="text/javascript" src="https://storage.perfectcdn.com/libs/jquery/1.12.4/jquery.min.js"></script>
+  
+<script>
+    $('document').ready(function() {
+  
+        if (localStorage.getItem("avaNaizop") != null) {
+            const avaUser = JSON.parse(localStorage.getItem('avaNaizop'));
+            document.getElementById('profile_img').setAttribute('src', avaUser[0]);
+        }
+  
+        $('input[type=file]').on('change', function() {
+            let $files = $(this).get(0).files;
+            let allowExtensions = /(\.jpg|\.jpeg|\.bmp|\.gif|\.png)$/i;
+  
+            if (!allowExtensions.exec($files[0].name)) {
+              // here need to add notifications
+                console.log('Format is not valid!')
+                return false;
+            }
+  
+            if ($files.length) {
+                // Reject big files
+                if ($files[0].size > $(this).data('max-size') * 1024) {
+                    console.log('Select smaller file')
+                    return false;
+                }
+  
+                //Begin file
+                //console.log('Upload to imgur')
+  
+                //$("#progress").show();
+  
+                let apiUrl = 'https://api.imgur.com/3/image';
+                let apiKey = 'b8dc72d6777a488';
+  
+                let settings = {
+                    async: false,
+                    crossDomain: true,
+                    processData: false,
+                    contentType: false,
+                    type: 'POST',
+                    url: apiUrl,
+                    headers: {
+                        Authorization: 'Client-ID ' + apiKey,
+                        Accept: 'application/json',
+                    },
+                    mimeType: 'multipart/form-data',
+                }
+  
+                let formData = new FormData();
+                formData.append('image', $files[0]);
+                settings.data = formData;
+  
+                $.ajax(settings).done(function (response) {
+                    //$("#progress").hide();
+                    let data = JSON.parse(response)
+                    const userData = [data.data.link, data.data.deletehash]
+                    localStorage.setItem('avaNaizop', JSON.stringify(userData));
+                    document.getElementById('profile_img').setAttribute('src', data.data.link);
+                });
+  
+            }
+        })
+  
+    })
+    $(document).ready(function () {
+        function activateTab(tab) {
+            $('.account__tab').removeClass('account__tab--active');
+            $('.account__panel').removeClass('account__panel--active');
+
+            $('.account__tab[data-tab="' + tab + '"]').addClass('account__tab--active');
+            $('.account__panel--' + tab).addClass('account__panel--active');
+        }
+
+        $('.account__tab').on('click', function () {
+            let tab = $(this).data('tab');
+            window.location.hash = tab; 
+            activateTab(tab);
+        });
+
+        let hashTab = window.location.hash.substring(1);
+        if (hashTab && $('.account__tab[data-tab="' + hashTab + '"]').length) {
+            activateTab(hashTab);
+        } else {
+            activateTab('main-info');
+        }
+    });
+</script>
